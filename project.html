@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Manage your projects effectively with our project management form."
+    />
+    <title>My Project</title>
+    <style>
+      a {
+        text-decoration: none; /* Menghilangkan garis bawah */
+        color: inherit; /* Mengambil warna teks dari elemen di sekitarnya */
+      }
+      .full {
+        font-family: Arial, sans-serif;
+        background-color: #e3e7eb;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      form {
+        background-color: #e3e7eb;
+        padding: 30px;
+        border-radius: 10px;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      h2 {
+        text-align: center;
+        font-weight: bold;
+      }
+
+      label {
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      textarea {
+        resize: none;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .button {
+        background-color: black;
+        padding: 7px 25px;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        border: none;
+        border-radius: 15px;
+      }
+
+      .button:hover {
+        background-color: #333;
+      }
+
+      .date-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+      }
+
+      .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 70px; /* Mengatur jarak antar checkbox */
+        margin-top: 10px; /* Jarak antara label Technologies dan checkbox */
+      }
+
+      .checkbox-column {
+        display: flex;
+        flex-direction: column;
+        gap: 7px; /* Jarak antar checkbox dalam kolom */
+      }
+
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        width: 60px;
+        gap: 7px;
+      }
+
+      .input-blog-image-group {
+        font-size: 16px;
+        font-weight: 400;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        background: white;
+        border: 1px solid #c4c4c4;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .input-blog-image-group input[type="file"] {
+        display: none;
+      }
+
+      .input-blog-image-group button {
+        background-color: black;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
+
+      .input-blog-image-group img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+
+      .upload-label {
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      #card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+        justify-content: flex-start;
+        margin-left: 50px;
+      }
+
+      .card {
+        width: calc(30% - 50px);
+        box-shadow: 0px 4px 6px rgba(1, 1, 1, 1);
+        border-radius: 8px;
+        padding: 20px;
+        background-color: #fff;
+        text-align: left;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card-title,
+      .card-description,
+      .card-technologies {
+        margin: 5px 0;
+      }
+
+      .card-duration {
+        font-size: smaller;
+      }
+
+      .card-title {
+        font-weight: bold;
+      }
+
+      .button-group {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+      }
+
+      .button-group button {
+        flex: 1;
+        padding: 10px;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .button-group button:hover {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul
+        style="
+          background-color: F4F3F3;
+          list-style-type: none;
+          display: flex;
+          gap: 35px;
+          align-items: center;
+        "
+      >
+        <li><img src="dumb.png" style="height: 25px" /></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="project.html">My Project</a></li>
+        <li style="width: 75%; display: flex; justify-content: flex-end">
+          <button
+            style="
+              background-color: black;
+              padding: 7px 25px;
+              color: white;
+              font-weight: bold;
+              border: none;
+              border-radius: 5px;
+            "
+          >
+            <a href="contact.html" style="color: white">Contact Me</a>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="full">
+      <form id="project-form" action="#" method="post">
+        <h2>ADD MY PROJECT</h2>
+        <div>
+          <label for="project-name">Project Name</label>
+          <input id="project-name" type="text" required />
+        </div>
+        <div class="date-container">
+          <div>
+            <label for="start-date">Start Date</label>
+            <input id="start-date" type="date" required />
+          </div>
+          <div>
+            <label for="end-date">End Date</label>
+            <input id="end-date" type="date" required />
+          </div>
+        </div>
+        <div>
+          <label for="description">Description</label>
+          <textarea style="height: 100px" id="description" required></textarea>
+        </div>
+        <div>
+          <label>Technologies</label>
+          <div class="checkbox-group">
+            <div class="checkbox-column">
+              <div class="checkbox-item">
+                <input type="checkbox" id="NodeJs" />
+                <label for="NodeJs">NodeJs</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="ReactJs" />
+                <label for="ReactJs">ReactJs</label>
+              </div>
+            </div>
+            <div class="checkbox-column">
+              <div class="checkbox-item">
+                <input type="checkbox" id="NextJs" />
+                <label for="NextJs">NextJs</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="TypeScript" />
+                <label for="TypeScript">TypeScript</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label>Upload Image</label>
+          <div class="input-blog-image-group">
+            <button id="upload-button" type="button">Choose</button>
+            <span class="upload-label">No file chosen</span>
+            <img src="attach.png" alt="file" id="attach-icon" />
+            <input type="file" id="input-blog-image" />
+          </div>
+        </div>
+        <div class="button-container">
+          <button type="submit" class="button">Submit</button>
+        </div>
+      </form>
+    </div>
+    <h2>MY PROJECT</h2>
+    <div class="card-container" id="card-container">
+      <!-- Dynamic Cards -->
+    </div>
+
+    <script src="project.js"></script>
+  </body>
+</html>

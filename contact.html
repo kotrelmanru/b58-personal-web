@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Contact Form</title>
+    <title>Contact Me</title>
     <style>
       a {
         text-decoration: none; /* Menghilangkan garis bawah */
@@ -83,7 +83,7 @@
       >
         <li><img src="dumb.png" style="height: 25px" /></li>
         <li><a href="index.html">Home</a></li>
-        <li>My Project</li>
+        <li><a href="project.html">My Project</a></li>
         <li style="width: 75%; display: flex; justify-content: flex-end">
           <button
             style="
@@ -102,8 +102,7 @@
     </nav>
 
     <div class="full">
-      <form
-      onsubmit="sendToMail(event)">
+      <form onsubmit="sendToMail(event)">
         <h2>GET IN TOUCH</h2>
         <div>
           <label>Name</label>
@@ -115,7 +114,7 @@
         </div>
         <div>
           <label>Phone Number</label>
-          <input id="phone"/>
+          <input id="phone" />
         </div>
         <div>
           <label>Subject</label>
@@ -134,7 +133,9 @@
         </div>
       </form>
     </div>
-    <a href="mailto:${inputEmail}?subject=${inputSubject}&body=${inputMessage}"></a>
+    <a
+      href="mailto:${inputEmail}?subject=${inputSubject}&body=${inputMessage}"
+    ></a>
     <script src="contact.js"></script>
   </body>
 </html>
