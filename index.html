@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <link
-      href="https://fonts.googleapis.com/css?family=DM Sans"
-      rel="stylesheet"
-    />
-    <title>card</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css?family=DM Sans" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Profile Card</title>
     <style>
-      a {
-        text-decoration: none; /* Menghilangkan garis bawah */
-        color: inherit; /* Mengambil warna teks dari elemen di sekitarnya */
+      body {
+        font-family: "DM Sans", sans-serif;
       }
+
       .full {
         padding: 75px;
         background-color: #e3e7eb;
-        font-family: "DM Sans";
       }
 
       .icon-container {
@@ -24,35 +23,14 @@
         margin-top: 20px;
       }
 
+      h2 {
+        text-align: center;
+        font-weight: bold;
+      }
+
       .icon {
         width: 30px;
         height: 30px;
-      }
-
-      .full-card {
-        border-radius: 10px;
-        box-shadow: 0px 15px 30px 0px rgba(0, 0, 0, 0.5);
-        background-color: white;
-        margin: auto;
-        border-color: white;
-        border-style: solid;
-        width: 95%;
-        padding: 40px;
-      }
-
-      .card {
-        background-color: white;
-        margin: auto;
-        border-color: white;
-        border-style: solid;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-      }
-
-      .card-content {
-        width: 60%;
       }
 
       .profile {
@@ -63,22 +41,9 @@
         height: 300px;
       }
 
-      .card-profile {
-        padding: 5px;
-        border-radius: 10px;
-        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
-        margin: auto;
-        border-width: 0px;
-        border-color: black;
-        border-style: solid;
-        width: 300px;
-        text-align: center;
-      }
-
-    
       .button-contact {
-        width: 130px; 
-        padding: 10px 20px; 
+        width: 130px;
+        padding: 10px 20px;
         font-size: medium;
         color: white;
         background-color: black;
@@ -87,84 +52,82 @@
         cursor: pointer;
       }
 
-      
-      .action-container {
-        display: flex;
-        gap: 20px;
-        align-items: center; 
+      .card-profile {
+        padding: 20px;
+      }
+
+      @media (max-width: 800px) {
+        .full {
+          padding: 20px;
+        }
       }
     </style>
   </head>
   <body>
-    <nav>
-      <ul
-        style="
-          background-color: F4F3F3;
-          list-style-type: none;
-          display: flex;
-          gap: 35px;
-          align-items: center;
-        "
-      >
-        <li><img src="dumb.png" style="height: 25px" /></li>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="project.html">My Project</a></li>
-        <li style="width: 75%; display: flex; justify-content: flex-end">
-          <button
-            style="
-              background-color: black;
-              padding: 7px 25px;
-              color: white;
-              font-weight: bold;
-              border: none;
-              border-radius: 5px;
-            "
-          >
-            <a href="contact.html">Contact Me</a>
-          </button>
-        </li>
-      </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="dumb.png" style="height: 25px" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="project.html">Add Project</a></li>
+          </ul>
+          <button class="btn btn-dark ml-auto" onclick="window.location.href='contact.html'">Contact Me</button>
+        </div>
+      </div>
     </nav>
+
     <div class="full">
-      <div class="full-card">
-        <div class="card">
-          <div class="card-content">
-            <h2>Hii, Welcome to My Profile</h2>
-            <p style="text-align: justify">
-              I am a Tech Enthusiast with experience in various technology
-              fields including web and mobile development, and data management.
-              I look forward to continuing to develop my skills and become an
-              expert in technologies that help create innovations that drive
-              positive change in society. Strong communication skills are
-              essential for effective teamwork, leadership, and adaptability in
-              any work environment.
-            </p>
-            
-            <div class="action-container">
-              <button class="button-contact">contact</button>
-              <p style="font-size: 20px">
-                download CV
-                <img src="downloads.png" style="width: 20px; height: 20px" />
-              </p>
+      <div class="container">
+        <div class="card full-card shadow">
+          <div class="row">
+            <div class="col-md-8 card-content">
+              <div class="card-body">
+                <h2 class="card-title">Hii, Welcome to My Profile</h2>
+                <p class="card-text" style="text-align: justify">
+                  I am a Tech Enthusiast with experience in various technology fields including web and mobile development, and data management. I look forward to continuing to develop my skills and become an expert in technologies that help create innovations that drive positive change in society. Strong communication skills are essential for effective teamwork, leadership, and adaptability in any work environment.
+                </p>
+                <div class="action-container d-flex align-items-center">
+                  <button class="btn btn-dark" onclick="window.location.href='contact.html'">Contact</button>
+                  <p class="ml-3" style="font-size: 25px">
+                    Download CV <img src="downloads.png" style="width: 15px; height: 15px" />
+                  </p>
+                </div>
+
+                <div class="icon-container">
+                  <img src="linkedin.png" class="icon" />
+                  <img src="instagram.webp" class="icon" />
+                  <img src="facebook.png" class="icon" />
+                  <img src="twitter.png" class="icon" />
+                </div>
+              </div>
             </div>
 
-            <div class="icon-container">
-              <img src="linkedin.png" class="icon" />
-              <img src="instagram.webp" class="icon" />
-              <img src="facebook.png" class="icon" />
-              <img src="twitter.png" class="icon" />
+            <div class="col-md-4 text-center">
+              <div class="card-profile">
+                <img src="profile.jpeg" class="profile img-fluid" />
+                <div style="font-size: 20px; font-weight: 300">Kotrel Manurung</div>
+                <div>Calon Fullstack Developer</div>
+              </div>
             </div>
-          </div>
-
-          <div class="card-profile">
-            <img src="profile.jpeg" class="profile" />
-            <div style="font-size: 20px; font-weight: 300px">
-              Kotrel Manurung
-            </div>
-            <div>Calon Fullstack Developer</div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="container mt-5">
+      <h2>MY PROJECT</h2>
+      <div class="row" id="card-container">
+        <!-- Dynamic Cards -->
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="project.js"></script>
   </body>
 </html>
