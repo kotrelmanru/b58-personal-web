@@ -1,0 +1,183 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Edit your project details." />
+    <title>Edit Project</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      a { text-decoration: none; color: inherit; } .full { background-color:
+      #e3e7eb; height: 110vh; display: flex; justify-content: center;
+      align-items: flex-start; padding-top: 20px; } form { background-color:
+      #ffffff; padding: 30px; border-radius: 10px; width: 400px; display: flex;
+      flex-direction: column; gap: 20px; } h2 { text-align: center; font-weight:
+      bold; } .button-container { display: flex; justify-content: flex-end; }
+      .button { background-color: black; padding: 7px 25px; color: white;
+      font-size: 15px; font-weight: bold; border: none; border-radius: 15px; }
+      .button:hover { background-color: #333; } #card-container { display: flex;
+      flex-wrap: wrap; gap: 50px; justify-content: flex-start; margin: 20px; }
+      .card { width: calc(30% - 50px); box-shadow: 0px 4px 6px rgba(1, 1, 1, 1);
+      border-radius: 8px; padding: 20px; background-color: #fff; text-align:
+      left; overflow: hidden; display: flex; flex-direction: column;
+      justify-content: space-between; } .card img { width: 100%; height: 200px;
+      object-fit: cover; border-radius: 8px; } .card-title { font-weight: bold;
+      } .card-duration { font-size: smaller; }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/"><img
+            src="../assets/icon/dumb.png"
+            style="height: 25px"
+          /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/project">Add Project</a></li>
+          </ul>
+          <button
+            class="btn btn-dark ml-auto"
+            onclick="window.location.href='/contact'"
+          >Contact Me</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="full">
+      <form
+        id="edit-project-form"
+        action="/edit-project/{{project.id}}"
+        method="post"
+      >
+        <h2>EDIT PROJECT</h2>
+        <div>
+          <label for="project_name">Project Name</label>
+          <input
+            id="title"
+            name="project_name"
+            type="text"
+            class="form-control"
+            value="{{project.project_name}}"
+            required
+          />
+        </div>
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="start_date">Start Date</label>
+            <input
+              id="start"
+              name="start_date"
+              type="date"
+              class="form-control"
+              value="{{project.start_date}}"
+              required
+            />
+          </div>
+          <div class="form-group col">
+            <label for="end_date">End Date</label>
+            <input
+              id="end"
+              name="end_date"
+              type="date"
+              class="form-control"
+              value="{{project.end_date}}"
+              required
+            />
+          </div>
+        </div>
+        <div>
+          <label for="description">Description</label>
+          <textarea
+            id="content"
+            name="description"
+            class="form-control"
+            rows="3"
+            value="{{project.description}}"
+            required
+          >{{project.description}}</textarea>
+        </div>
+        <div>
+          <label>Technologies</label>
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              name="technologies"
+              value="NodeJs"
+              id="NodeJs"
+            />
+            <label class="form-check-label" for="NodeJs">NodeJs</label>
+          </div>
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              name="technologies"
+              value="ReactJs"
+              id="ReactJs"
+            />
+            <label class="form-check-label" for="ReactJs">ReactJs</label>
+          </div>
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              name="technologies"
+              value="NextJs"
+              id="NextJs"
+            />
+            <label class="form-check-label" for="NextJs">NextJs</label>
+          </div>
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              name="technologies"
+              value="TypeScript"
+              id="TypeScript"
+            />
+            <label class="form-check-label" for="TypeScript">TypeScript</label>
+          </div>
+        </div>
+        <div>
+          <label>Upload Image</label>
+          <div class="input-blog-image-group">
+            <button
+              id="upload-button"
+              type="button"
+              class="btn btn-secondary"
+            >Choose</button>
+            <span class="upload-label">No file chosen</span>
+            <input type="file" id="input-blog-image" style="display: none;" />
+          </div>
+        </div>
+        <div class="button-container">
+          <button type="submit" class="button">Update</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    ></script>
+  </body>
+</html>

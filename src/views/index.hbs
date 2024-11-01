@@ -1,0 +1,203 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM Sans"
+      rel="stylesheet"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>Profile Card</title>
+    <style>
+      body { font-family: "DM Sans", sans-serif; } .full { padding: 75px;
+      background-color: #e3e7eb; } .icon-container { display: flex;
+      justify-content: left; gap: 20px; margin-top: 20px; } h2 { text-align:
+      left; font-weight: bold; } .icon { width: 35px !important; height: 35px
+      !important; } .profile { border-radius: 10px; background-color: white;
+      object-fit: cover; width: 300px; height: 300px; } .button-contact { width:
+      130px; padding: 10px 20px; font-size: medium; color: white;
+      background-color: black; border-radius: 50px; border: none; cursor:
+      pointer; } .card-profile { padding: 30px; } #card-container { display:
+      flex; flex-wrap: wrap; justify-content: space-between; } .card { flex: 0 1
+      30%; margin: 15px; padding: 10px; border-radius: 10px; overflow: hidden;
+      background-color: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s; } .card:hover { transform: translateY(-5px); }
+      .card-content { padding: 2px; } .card img { width: 100%; height: 150px;
+      uniformity */ object-fit: cover; } .card-title { font-size: 1.5rem;
+      font-weight: bold; color: #333; text-decoration: none; */ }
+      .card-title:hover { color: #007bff; } .card-duration, .card-description,
+      .card-technologies { font-size: 0.9rem; color: #666; margin-top: 5px; }
+      .button-group { display: flex; justify-content: space-between; margin-top:
+      10px; } .button-card { background-color: #007bff; color: white; padding:
+      10px 15px; border-radius: 5px; text-decoration: none; } .button-card:hover
+      { background-color: #0056b3; } .description-text { display: -webkit-box;
+      -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden;
+      text-overflow: ellipsis; height: 6em; } @media (max-width: 800px) { .full
+      { padding: 20px; } .card { flex: 0 1 100%; } }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/"><img
+            src="../assets/icon/dumb.png"
+            style="height: 25px"
+          /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="project">Add Project</a></li>
+          </ul>
+          <button
+            class="btn btn-dark ml-auto"
+            onclick="window.location.href='contact'"
+          >Contact Me</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="full">
+      <div class="container">
+        <div class="card full-card shadow">
+          <div class="row">
+            <div class="col-md-8 card-content">
+              <div class="card-body">
+                <h1>Hii, Welcome to My Profile</h1>
+                <p class="card-text" style="text-align: justify">
+                  I am a Tech Enthusiast with experience in various technology
+                  fields including web and mobile development, and data
+                  management. I look forward to continuing to develop my skills
+                  and become an expert in technologies that help create
+                  innovations that drive positive change in society. Strong
+                  communication skills are essential for effective teamwork,
+                  leadership, and adaptability in any work environment.
+                </p>
+                <div class="action-container d-flex align-items-center">
+                  <button
+                    class="btn btn-dark"
+                    onclick="window.location.href='contact'"
+                  >Contact</button>
+                  <p class="ml-3" style="font-size: 25px">
+                    Download CV
+                    <img
+                      src="../assets/icon/downloads.png"
+                      style="width: 15px; height: 15px"
+                    />
+                  </p>
+                </div>
+
+                <div class="icon-container">
+                  <img src="../assets/icon/linkedin.png" class="icon" />
+                  <img src="../assets/icon/instagram.webp" class="icon" />
+                  <img src="../assets/icon/facebook.png" class="icon" />
+                  <img src="../assets/icon/twitter.png" class="icon" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 text-center">
+              <div class="card-profile">
+                <img
+                  src="../assets/img/profile.jpeg"
+                  class="profile img-fluid"
+                  style="width: 300px; height: 300px; object-fit: cover;"
+                />
+                <div style="font-size: 20px; font-weight: 300">Kotrel Manurung</div>
+                <div>Calon Fullstack Developer</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <h1 style="text-align:center">MY PROJECT</h1>
+      <div id="card-container">
+        {{#each projects}}
+          <div class="card">
+            <div class="card-content">
+              <a href="/project-detail/{{id}}">
+                <img
+                  id="card-image-{{id}}"
+                  src="{{image}}"
+                  alt="Project Image"
+                />
+              </a>
+              <a
+                href="/project-detail/{{id}}"
+                class="card-title"
+                id="card-title-{{id}}"
+              >
+                {{project_name}}
+                -
+                {{getYear start_date}}
+              </a>
+              <div class="card-duration" id="card-duration-{{id}}">
+                Durasi:
+                {{calculateDuration start_date end_date}}
+                bulan
+              </div>
+            </div>
+            <div class="card-description" id="card-description-{{id}}">
+              <div class="description-text">
+                {{description}}
+              </div>
+            </div>
+            <div class="card-technologies" id="card-technologies-{{id}}">
+              {{technologies}}
+            </div>
+            <div class="button-group mt-auto row">
+              <div class="col">
+                <a
+                  href="/edit-project/{{id}}"
+                  class="btn btn-dark btn-block"
+                >Edit</a>
+              </div>
+              <div class="col">
+                <form
+                  method="POST"
+                  action="/delete-project/{{id}}"
+                  style="display: inline;"
+                >
+                  <button
+                    class="btn btn-dark btn-block"
+                    type="submit"
+                  >Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    ></script>
+    <script src="project.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"
+    ></script>
+
+  </body>
+</html>
