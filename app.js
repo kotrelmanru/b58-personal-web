@@ -3,13 +3,13 @@ const app = express();
 const port = 3000;
 const path = require("path");
 require("./src/libs/hbs-helper");
-const config = require("./src/config/config.json");
+const config = require("./config/config.json");
 const { Sequelize, QueryTypes } = require("sequelize");
 const sequelize = new Sequelize(config.development);
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
-const upload = require("./src/middleware/upload-file");
+const upload = require("./middleware/upload-file");
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "./src/views"));
