@@ -19,3 +19,8 @@ hbs.registerHelper("formatDate", function (date) {
   const options = { year: "numeric", month: "short", day: "numeric" };
   return new Date(date).toLocaleDateString("id-ID", options);
 });
+
+// Registering the 'eq' helper to compare values
+hbs.registerHelper("eq", function (a, b) {
+  return a === b; // This checks if 'a' is strictly equal to 'b'
+});

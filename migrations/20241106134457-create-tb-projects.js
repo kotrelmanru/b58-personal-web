@@ -9,9 +9,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      project_name: {
-        type: Sequelize.STRING,
-      },
       start_date: {
         type: Sequelize.TIME,
       },
@@ -19,13 +16,20 @@ module.exports = {
         type: Sequelize.TIME,
       },
       description: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
       },
       technologies: {
         type: Sequelize.STRING,
       },
       image: {
         type: Sequelize.STRING,
+      },
+      user_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,
