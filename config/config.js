@@ -4,16 +4,16 @@ const pg = require("pg");
 module.exports = {
   development: {
     username: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
+    password: String(process.env.POSTGRES_PASSWORD), // Pastikan password adalah string
     database: process.env.POSTGRES_DATABASE,
     host: process.env.POSTGRES_HOST,
     dialect: "postgres",
     dialectModule: pg,
-    dialectOptions: {}, // Tidak menggunakan SSL di development
+    dialectOptions: {},
   },
   production: {
     username: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
+    password: String(process.env.POSTGRES_PASSWORD), // Pastikan password adalah string
     database: process.env.POSTGRES_DATABASE,
     host: process.env.POSTGRES_HOST,
     dialect: "postgres",
@@ -21,9 +21,8 @@ module.exports = {
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized: false, // Mengizinkan sertifikat tidak terotorisasi
+        rejectUnauthorized: false,
       },
-      sslmode: "require", // Memastikan SSL mode diaktifkan
     },
   },
 };
