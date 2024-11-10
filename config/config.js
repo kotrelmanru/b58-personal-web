@@ -8,13 +8,8 @@ module.exports = {
     database: process.env.POSTGRES_DATABASE,
     host: process.env.POSTGRES_HOST,
     dialect: "postgres",
-    dialectModule: pg,
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
-    },
+    dialectModule: require("pg"),
+    dialectOptions: {}, // No SSL for local development
   },
   production: {
     username: process.env.POSTGRES_USER,
@@ -22,13 +17,8 @@ module.exports = {
     database: process.env.POSTGRES_DATABASE,
     host: process.env.POSTGRES_HOST,
     dialect: "postgres",
-    dialectModule: pg,
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
-    },
+    dialectModule: require("pg"),
+    dialectOptions: {}, // No SSL for local development
   },
 };
 
