@@ -8,6 +8,7 @@ const { Sequelize, QueryTypes } = require("sequelize");
 
 const bcrypt = require("bcrypt");
 const session = require("express-session");
+const MemoryStore = require('memorystore')(session); // Import memorystore
 const flash = require("express-flash");
 const upload = require("./src/middleware/upload-file");
 
@@ -27,12 +28,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     name: "my-session",
-    secret: "kelapamiringlarilurus",
+    secret: "kelapamiringlarilurus", // Gantilah secret ini dengan nilai yang lebih aman
     resave: false,
     saveUninitialized: true,
+    store: new MemoryStore({
+      checkPeriod: 86400000, // Periksa dan hapus entri sesi yang sudah kedaluwarsa setiap 24 jam
+    }),
     cookie: {
-      secure: false,
-      maxAge: 1000 * 60 * 60 * 24, // 1 hari
+      secure: false, // Untuk HTTPS, ganti menjadi true
+      maxAge: 1000 * 60 * 60 * 24, // Sesi kedaluwarsa dalam 1 hari
     },
   })
 );
