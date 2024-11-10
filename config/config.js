@@ -9,7 +9,7 @@ module.exports = {
     host: process.env.POSTGRES_HOST,
     dialect: "postgres",
     dialectModule: pg,
-    dialectOptions: {},
+    dialectOptions: {}, // Tidak menggunakan SSL di development
   },
   production: {
     username: process.env.POSTGRES_USER,
@@ -21,8 +21,9 @@ module.exports = {
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized: false, // Mengizinkan koneksi ke server dengan sertifikat yang tidak authorized
+        rejectUnauthorized: false, // Mengizinkan sertifikat tidak terotorisasi
       },
+      sslmode: "require", // Memastikan SSL mode diaktifkan
     },
   },
 };
