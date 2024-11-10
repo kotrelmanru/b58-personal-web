@@ -18,6 +18,7 @@ module.exports = {
     host: process.env.POSTGRES_HOST,
     dialect: "postgres",
     dialectModule: require("pg"),
+    sslmode: require,
     dialectOptions: {
       ssl: {
         require: true,
