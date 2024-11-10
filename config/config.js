@@ -8,7 +8,7 @@ module.exports = {
     database: process.env.POSTGRES_DATABASE,
     host: process.env.POSTGRES_HOST,
     dialect: "postgres",
-    dialectModule: pg,
+    dialectModule: require("pg"),
     dialectOptions: {},
   },
   production: {
@@ -17,7 +17,7 @@ module.exports = {
     database: process.env.POSTGRES_DATABASE,
     host: process.env.POSTGRES_HOST,
     dialect: "postgres",
-    dialectModule: pg,
+    dialectModule: require("pg"),
     dialectOptions: {
       ssl: {
         require: true,
