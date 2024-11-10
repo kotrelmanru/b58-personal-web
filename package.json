@@ -4,6 +4,7 @@
   "description": "My Profile Web",
   "main": "index.js",
   "scripts": {
+    "postinstall": "sequelize db:migrate",
     "dev": "npx nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
