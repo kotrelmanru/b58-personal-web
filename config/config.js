@@ -18,6 +18,11 @@ module.exports = {
     host: process.env.POSTGRES_HOST,
     dialect: "postgres",
     dialectModule: pg,
-    dialectOptions: {},
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false, // Mengizinkan koneksi ke server dengan sertifikat yang tidak authorized
+      },
+    },
   },
 };
