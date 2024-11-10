@@ -9,7 +9,7 @@ module.exports = {
     host: process.env.POSTGRES_HOST,
     dialect: "postgres",
     dialectModule: require("pg"),
-    dialectOptions: {}, // No SSL for local development
+    dialectOptions: {},
   },
   production: {
     username: process.env.POSTGRES_USER,
@@ -17,8 +17,8 @@ module.exports = {
     database: process.env.POSTGRES_DATABASE,
     host: process.env.POSTGRES_HOST,
     dialect: "postgres",
-    dialectModule: require("pg"),
-    dialectOptions: {}, // No SSL for local development
+    dialectModule:require("pg"),
+    dialectOptions: {},
   },
 };
 
