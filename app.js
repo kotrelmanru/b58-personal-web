@@ -16,7 +16,10 @@ require("dotenv").config()
 
 const environment = process.env.NODE_ENV
 
-const sequelize = new Sequelize(config[environment]);
+const sequelize = new Sequelize(process.env.DB_URL, {
+  dialect: 'postgres',
+  ssl: { rejectUnauthorized: false }  // Pastikan SSL jika perlu
+});
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "./src/views"));
