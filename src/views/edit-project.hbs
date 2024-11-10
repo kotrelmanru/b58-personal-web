@@ -63,6 +63,7 @@
         id="edit-project-form"
         action="/edit-project/{{project.id}}"
         method="post"
+        enctype="multipart/form-data"
       >
         <h2>EDIT PROJECT</h2>
         <div>
@@ -118,30 +119,30 @@
               type="checkbox"
               class="form-check-input"
               name="technologies"
-              value="NodeJs"
+              value="NodeJS"
               id="NodeJs"
             />
-            <label class="form-check-label" for="NodeJs">NodeJs</label>
+            <label class="form-check-label" for="NodeJs">Node Js</label>
           </div>
           <div class="form-check">
             <input
               type="checkbox"
               class="form-check-input"
               name="technologies"
-              value="ReactJs"
+              value="ReactJS"
               id="ReactJs"
             />
-            <label class="form-check-label" for="ReactJs">ReactJs</label>
+            <label class="form-check-label" for="ReactJs">React Js</label>
           </div>
           <div class="form-check">
             <input
               type="checkbox"
               class="form-check-input"
               name="technologies"
-              value="NextJs"
+              value="NextJS"
               id="NextJs"
             />
-            <label class="form-check-label" for="NextJs">NextJs</label>
+            <label class="form-check-label" for="NextJs">Next Js</label>
           </div>
           <div class="form-check">
             <input
@@ -154,17 +155,37 @@
             <label class="form-check-label" for="TypeScript">TypeScript</label>
           </div>
         </div>
-        <div>
+       <div>
           <label>Upload Image</label>
-          <div class="input-blog-image-group">
-            <button
-              id="upload-button"
-              type="button"
-              class="btn btn-secondary"
-            >Choose</button>
-            <span class="upload-label">No file chosen</span>
-            <input type="file" id="input-blog-image" style="display: none;" />
-          </div>
+            <!-- Menampilkan Gambar yang Ada -->
+  <div id="image-preview">
+    {{#if project.image}}
+      <img src="/uploads/{{project.image}}" alt="Project Image" class="img-fluid" style="max-width: 100px; height: 40;"/>
+    {{/if}}
+  </div>
+  <div class="input-blog-image-group">
+    <!-- Tombol untuk memilih gambar -->
+    <button
+      id="upload-button"
+      type="button"
+      class="btn btn-secondary"
+    >Choose</button>
+    <span class="upload-label">No file chosen</span>
+    <input
+      name="image-update"
+      type="file"
+      id="input-blog-image"
+      style="display: none;"
+    />
+  </div>
+
+
+  
+  <div
+    id="file-error"
+    style="display: none; color: red; font-size: 12px;"
+  >
+    Only image files are allowed!
         </div>
         <div class="button-container">
           <button type="submit" class="button">Update</button>
@@ -172,6 +193,21 @@
       </form>
     </div>
 
+  <script>
+  // Menambahkan event listener untuk tombol upload
+  document.getElementById('upload-button').addEventListener('click', function() {
+    // Memicu input file yang tersembunyi saat tombol upload ditekan
+    document.getElementById('input-blog-image').click();
+  });
+
+  // Menambahkan event listener untuk perubahan pada input file
+  document.getElementById('input-blog-image').addEventListener('change', function() {
+    const fileInput = this;
+    const fileName = fileInput.files && fileInput.files[0] ? fileInput.files[0].name : 'No file chosen';
+    // Menampilkan nama file yang dipilih pada elemen dengan class 'upload-label'
+    document.querySelector('.upload-label').textContent = fileName;
+  });
+</script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

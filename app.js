@@ -9,14 +9,13 @@ const sequelize = new Sequelize(config.development);
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
-const upload = require("./middleware/upload-file");
+const upload = require("./src/middleware/upload-file");
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "./src/views"));
 
 app.use("/assets", express.static(path.join(__dirname, "./src/assets")));
-app.use("/uploads", express.static(path.join(__dirname, "./uploads")));
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static(path.join(__dirname, "./")));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -46,7 +45,7 @@ app.get("/project", project);
 app.post("/project", upload.single("image"), projectPost);
 app.post("/delete-project/:id", projectDelete);
 app.get("/edit-project/:id", editproject);
-app.post("/edit-project/:id", editprojectPost);
+app.post("/edit-project/:id", upload.single("image-update"), editprojectPost);
 app.get("/project-detail/:id", projectDetail);
 app.post("/logout", logout);
 
@@ -218,6 +217,8 @@ async function editproject(req, res) {
 async function editprojectPost(req, res) {
   const { id } = req.params;
 
+  const imagePath= req.file.path
+
   const {
     project_name,
     start_date,
@@ -227,7 +228,8 @@ async function editprojectPost(req, res) {
     image,
   } = req.body;
 
-  const query = `UPDATE tb_projects SET project_name='${project_name}',start_date='${start_date}',end_date='${end_date}',description='${description}',technologies='${technologies}',image='${image}' WHERE id=${id}`;
+
+  const query = `UPDATE tb_projects SET project_name='${project_name}',start_date='${start_date}',end_date='${end_date}',description='${description}',technologies='${technologies}',image='${imagePath}' WHERE id=${id}`;
   await sequelize.query(query, { type: QueryTypes.UPDATE });
 
   res.redirect("/");

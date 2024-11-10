@@ -8,40 +8,54 @@
       rel="stylesheet"
     />
     <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-/>
     <style>
-      .project-header { background: white; padding: 30px 0; text-align: center;
-      } .project-title { font-size: 2.5rem; font-weight: bold; margin-bottom:
-      20px; } .project-info { margin-top: 40px; } .project-img { max-height:
-      400px; object-fit: cover; width: 100%; border-radius: 10px; box-shadow:
-      0px 4px 12px rgba(0, 0, 0, 0.1); } .tech-list span { background-color:
-      #6c757d; color: white; border-radius: 5px; padding: 6px 12px;
-      margin-right: 8px; font-size: 0.9rem; }
+      .project-header {
+        background: white;
+        padding: 30px 0;
+        text-align: center;
+      }
+      .project-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .project-info {
+        margin-top: 40px;
+      }
+      .project-img {
+        max-height: 400px;
+        object-fit: cover;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .tech-list span {
+        background-color: #6c757d;
+        color: white;
+        border-radius: 5px;
+        padding: 6px 12px;
+        margin-right: 8px;
+        font-size: 0.9rem;
+      }
       .technology-icon {
-  width: 60px !important;  /* Set the width of the icon */ 
-  height: 60px !important; /* Set the height of the icon */
-  margin: 15px 10px !important; /* Add some space between icons */
+        width: 40px !important;
+        height: 40px !important;
+        margin: 15px 10px !important;
       }
     </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand" href="/"><img
-            src="../assets/icon/dumb.png"
-            style="height: 25px"
-          /></a>
+        <a class="navbar-brand" href="/"><img src="../assets/icon/dumb.png" style="height: 25px" /></a>
         <button
           class="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
           aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
@@ -53,10 +67,7 @@
             <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="/project">Add Project</a></li>
           </ul>
-          <button
-            class="btn btn-dark ml-auto"
-            onclick="window.location.href='/contact'"
-          >Contact Me</button>
+          <button class="btn btn-dark ms-auto" onclick="window.location.href='/contact'">Contact Me</button>
         </div>
       </div>
     </nav>
@@ -71,70 +82,68 @@
       <div class="row">
         <!-- Gambar Proyek -->
         <div class="col-md-6 mb-4">
-<img src="/uploads/image-1731077163628-911544295.png" alt="Project Image" class="project-img" id="project-image" />
+      
+          <img src="/uploads/{{project.image}}" alt="Project Image" class="project-img" id="project-image" />
+
 
         </div>
+        
         <!-- Detail Proyek -->
         <div class="col-md-6">
           <div class="mt-4">
             <h6 class="fw-bold">Duration</h6>
-            <p><i class="fa-solid fa-calculator fa-xl"></i>&nbsp;&nbsp;{{formatDate project.start_date}}
-              -
-              {{formatDate project.end_date}}</p>
-              <p>
-              <i class="fa-regular fa-clock fa-xl"></i>&nbsp;{{calculateDuration project.start_date project.end_date}}
-              month </p>
+            <p><i class="fa-solid fa-calculator fa-xl"></i>&nbsp;&nbsp;{{formatDate project.start_date}} - {{formatDate project.end_date}}</p>
+            <p><i class="fa-regular fa-clock fa-xl"></i>&nbsp;{{calculateDuration project.start_date project.end_date}} month</p>
           </div>
           <div class="mt-4">
-
-              <b>Author Name : </b>
-                {{#if project.author}}
-                  {{project.author}}
-                {{else}}
-                  Unknown User
-                {{/if}}             
+            <b>Author Name:</b>
+            {{#if project.author}}
+              {{project.author}}
+            {{else}}
+              Unknown User
+            {{/if}}
           </div>
-          <div class="mt-4"><b>Technologies</b></h6>
-            <div class="tech-list" id="project-technologies">
-<div class="card-technologies" id="card-technologies-{{id}}">
-{{#each project.technologies}}
-  {{#if (eq this 'NodeJS')}}
-    <img src="../assets/icon/nodejs.png" alt="NodeJs" class="technology-icon" />
-  {{else if (eq this 'ReactJS')}}
-    <img src="../assets/icon/reactjs.png" alt="ReactJs" class="technology-icon" />
-  {{else if (eq this 'NextJS')}}
-    <img src="../assets/icon/nextjs.png" alt="NextJs" class="technology-icon" />
-  {{else if (eq this 'TypeScript')}}
-    <img src="../assets/icon/typescript.png" alt="TypeScript" class="technology-icon" />
-  {{else}}
-    <p>Unknown Technology: {{this}}</p>
-  {{/if}}
-{{/each}}
-
-</div>
+          <div class="mt-4">
+            <h6><b>Technologies</b></h6>
+            <div class="row tech-list" id="project-technologies">
+              {{#each project.technologies}}
+                <div class="col-md-6">
+                  <div class="card-technologies" id="card-technologies-{{../id}}">
+                    {{#if (eq this 'NodeJS')}}
+                      <img src="../assets/icon/nodejs.png" alt="NodeJs" class="technology-icon" /> Node JS
+                    {{else if (eq this 'ReactJS')}}
+                      <img src="../assets/icon/reactjs.png" alt="ReactJs" class="technology-icon" /> React JS
+                    {{else if (eq this 'NextJS')}}
+                      <img src="../assets/icon/nextjs.png" alt="NextJs" class="technology-icon" /> Next JS
+                    {{else if (eq this 'TypeScript')}}
+                      <img src="../assets/icon/typescript.png" alt="TypeScript" class="technology-icon" /> TypeScript
+                    {{else}}
+                      <p>Unknown Technology: {{this}}</p>
+                    {{/if}}
+                  </div>
+                </div>
+              {{/each}}
             </div>
           </div>
         </div>
       </div>
 
       <!-- Description Section -->
-      <div class="row mt-5">
-        <div class="col-12">
-          <div class="project-description" id="project-description">
-            <p>{{project.description}}</p>
-          </div>
-        </div>
+<div class="row mt-5">
+  <div class="col-12">
+    <div class="project-description text-justify" id="project-description" style="text-align: justify;">
+      <p>{{project.description}}</p>
+    </div>
+  </div>
+</div>
+
+
+      <!-- Button Navigasi -->
+      <div class="text-center mt-5">
+        <a href="/project" class="btn btn-dark">Kembali ke Daftar Proyek</a>
       </div>
+    </div>
 
-              <!-- Button Navigasi -->
-              <div style="padding:10px" class="text-center mt-5">
-                <a href="/project" class="btn btn-dark">Kembali ke Daftar Proyek</a>
-              </div>
-            </div>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    ></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
